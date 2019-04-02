@@ -21,5 +21,21 @@ pipeline {
                 sh './jenkins/scripts/test.sh'
             }
         }
+        stage('Deploy for development') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                echo 'Delivering the site to development env'
+            }
+        }
+        stage('Deploy for prod') {
+            when {
+                branch 'prod'
+            }
+            steps {
+                echo 'Delivering the site to production env.'
+            }
+        }
     }
 }
